@@ -37,10 +37,10 @@ WORKDIR /app
 COPY --from=builder /src/main /app/main
 COPY --from=builder /usr/local/bin/xray /usr/local/bin/xray
 COPY --from=builder /usr/local/share/xray /usr/local/share/xray
-COPY --from=builder /src/certs /app/certs
+COPY --from=builder /src/certs /var/lib/pg-node/certs
 
-ENV SSL_CERT_FILE=/app/certs/ssl_cert.pem
-ENV SSL_KEY_FILE=/app/certs/ssl_key.pem
+ENV SSL_CERT_FILE=/var/lib/pg-node/certs/ssl_cert.pem
+ENV SSL_KEY_FILE=/var/lib/pg-node/certs/ssl_key.pem
 ENV NODE_HOST=0.0.0.0
 ENV SERVICE_PORT=62050
 
